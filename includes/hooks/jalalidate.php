@@ -1,8 +1,9 @@
 <?php
 /* *****************************************************
-    ** WHMCS 6 Jalali Dates **
+    ** WHMCS Jalali Dates **
     By Ehsan Chavoshi
-    Source : https://github.com/EhsanCh/whmcs6-jalalidate
+    Date : 2016-04-23
+    Source : https://github.com/EhsanCh/whmcs-jalalidate
 ***************************************************** */
 
 add_hook('ClientAreaPage', 1, function($templateVariables) {
