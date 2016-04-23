@@ -1,8 +1,9 @@
 <?php
 /* *****************************************************
     ** WHMCS Jalali Dates **
-    By Ehsan Chavoshi
+    By Ehsan Chavoshi (HostFa)
     Date : 2016-04-23
+    Lincense : MIT License
     Source : https://github.com/EhsanCh/whmcs-jalalidate
 ***************************************************** */
 
