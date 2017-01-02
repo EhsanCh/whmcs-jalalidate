@@ -66,7 +66,7 @@ Same as Admin (Above)
 <img alt="servicesList" src="https://demo.aminarjmand.com/coding/whmcs/img/9-servicesList.png" height="200" width="200">
 <img alt="ticketsList" src="https://demo.aminarjmand.com/coding/whmcs/img/10-ticketsList.png" height="200" width="200">
 <img alt="viewTicket" src="https://demo.aminarjmand.com/coding/whmcs/img/11-viewTicket.png" height="200" width="200">
-
+<img alt="viewTicket" src="https://demo.aminarjmand.com/coding/whmcs/img/13-emailsHistory.png" height="200" width="200">
 
 ---------------------
 Authors : Ehsan Chavoshi (HostFa) & Amin Arjmand (RaymonWeb)
