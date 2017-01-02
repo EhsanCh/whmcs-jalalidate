@@ -1,10 +1,11 @@
-# WHMCS Jalali date
-This hook convert your whmcs client area dates to Jalali (persian - shamsi) date
+# WHMCS Jalali Date
+This Hook Convert Your Whmcs Client Area Dates To Jalali (Persian - Shamsi) Date Like : 1395/10/13
 
-تقویم شمسی برای whmcs
+شمسی سازی تاریخ های WHMCS
+بروز رسانی شده برای WHMCS 7.1.1
 
 Compatible with whmcs v6.0 and later
 
-Author : Ehsan Chavoshi (HostFa)
+Authors : Ehsan Chavoshi (HostFa) & Amin Arjmand (RaymonWeb)
 Lincense : MIT License
-https://github.com/EhsanCh/whmcs-jalalidate/
+https://github.com/EhsanCh/whmcs-jalalidate/ Or https://github.com/sibche2013/whmcs-jalalidate (WHMCS 7.1.1 Updated)
