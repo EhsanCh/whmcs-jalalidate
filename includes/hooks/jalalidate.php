@@ -22,7 +22,7 @@ add_hook('ClientAreaPage', 1, function($templateVariables) {
         $domains['nextduedate'] = '<span class="text-danger">'.date("Y/m/d",strtotime($domains['normalisedNextDueDate'])).'&nbsp;('.jdate("Y/m/d", strtotime($domains['normalisedNextDueDate'])).')</span>';
     }
 	foreach ($templateVariables['renewals'] as &$renewals) {
-        $renewals['expiryDate'] = date("Y/m/d",strtotime($domains['normalisedExpiryDate'])).'&nbsp;('.jdate("Y/m/d", strtotime($domains['normalisedExpiryDate'])).')';
+        $renewals['expiryDate'] = '<span class="text-danger">'.date("Y/m/d",strtotime($renewals['normalisedExpiryDate'])).'&nbsp;('.jdate("Y/m/d", strtotime($renewals['normalisedExpiryDate'])).')';
     }
     foreach ($templateVariables['services'] as &$services) {
         $services['regdate'] = jdate("Y/m/d", strtotime($services['normalisedRegDate']));
