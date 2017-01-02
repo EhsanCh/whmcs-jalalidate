@@ -21,8 +21,12 @@ add_hook('ClientAreaPage', 1, function($templateVariables) {
         $domains['registrationdate'] = '<span class="text-info">'.date("Y/m/d",strtotime($domains['normalisedRegistrationDate'])).'&nbsp;('.jdate("Y/m/d", strtotime($domains['normalisedRegistrationDate'])).')</span>';
         $domains['nextduedate'] = '<span class="text-danger">'.date("Y/m/d",strtotime($domains['normalisedNextDueDate'])).'&nbsp;('.jdate("Y/m/d", strtotime($domains['normalisedNextDueDate'])).')</span>';
     }
-	foreach ($templateVariables['renewals'] as &$renewals) {
+    foreach ($templateVariables['renewals'] as &$renewals) {
         $renewals['expiryDate'] = '<span class="text-danger">'.date("Y/m/d",strtotime($renewals['normalisedExpiryDate'])).'&nbsp;('.jdate("Y/m/d", strtotime($renewals['normalisedExpiryDate'])).')';
+    }
+    foreach ($templateVariables['quotes'] as &$quotes) {
+        $quotes['datecreated'] = '<span class="text-danger">'.date("Y/m/d",strtotime($quotes['normalisedDateCreated'])).'&nbsp;('.jdate("Y/m/d", strtotime($quotes['normalisedDateCreated'])).')';
+        $quotes['validuntil'] = '<span class="text-danger">'.date("Y/m/d",strtotime($quotes['normalisedValidUntil'])).'&nbsp;('.jdate("Y/m/d", strtotime($quotes['normalisedValidUntil'])).')';
     }
     foreach ($templateVariables['services'] as &$services) {
         $services['regdate'] = jdate("Y/m/d", strtotime($services['normalisedRegDate']));
