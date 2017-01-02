@@ -39,6 +39,17 @@ Same as Admin (Above)
 
 <img alt="newsHome" src="https://demo.aminarjmand.com/coding/whmcs/img/12-JalaliDateHookInstallation.png" height="200" width="200">
 
+# استایل شخصی برای رنگ قرمز و آبی
+بصورت پیشفرض رنگ آبی و قرمز دو کلاس تعریف شده در استایل قالب هستن ولی اگر خودتون خواستین رنگ دیگری رو برای این دو رنگ انتخاب کنید کافیه کد زیر رو در استایل قالبتون بزارین و کد رنگ مورد نظرتون رو جایگزین کنید:»
+
+.text-danger{
+    color: red;
+}
+
+.text-info{
+    color: blue;
+}
+
 
 ---------------------
 # تصاویر قسمت های فارسی شده :
