@@ -50,7 +50,27 @@ Same as Admin (Above)
     color: blue;
 }
 
-
+# شمسی کردن تاریخ قسمت اطلاعیه ها یا اخبار
+برای شمسی کردن کافیه در فایل
+announcements.tpl
+حدودا خط 20 به جای 
+{"M jS"|date:$announcement.timestamp}
+عبارت زیر رو قرار بدین :
+{$announcement.timestamp}
+-----
+و در فایل
+homepage.tpl
+حدودا خط 20 به جای
+{$announcement.rawDate|date_format:"M jS"}
+عبارت زیر رو قرار بدین :
+{$announcement.rawDate}
+-----
+و در نهایت در فایل
+viewannoincement.tpl
+حدودا خط 13 بجای 
+{$timestamp|date_format:"%A, %B %e, %Y"}
+عبارت زیر رو قرار دهید :
+{jdate("j F Y",strtotime($timestamp|date_format:"%A, %B %e, %Y"))}
 ---------------------
 # تصاویر قسمت های فارسی شده :
 جهت مشاهده تصاویر در ابعاد واقعی ، بر روی آنها کلیک نمایید >>
