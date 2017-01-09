@@ -67,7 +67,7 @@ Same as Admin (Above)
 <img alt="ticketsList" src="https://demo.aminarjmand.com/coding/whmcs/img/10-ticketsList.png" height="200" width="200">
 <img alt="viewTicket" src="https://demo.aminarjmand.com/coding/whmcs/img/11-viewTicket.png" height="200" width="200">
 <img alt="emailsHistory" src="https://demo.aminarjmand.com/coding/whmcs/img/13-emailsHistory.png" height="200" width="200">
-
+<img alt="ProductDetails" src="https://demo.aminarjmand.com/coding/whmcs/img/14-ProuductDetailsPage.png" height="200" width="200">
 ---------------------
 Authors : Ehsan Chavoshi (HostFa) & Amin Arjmand (RaymonWeb)
 Lincense : MIT License
