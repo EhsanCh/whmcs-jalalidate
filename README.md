@@ -69,6 +69,6 @@ Same as Admin (Above)
 <img alt="emailsHistory" src="https://demo.aminarjmand.com/coding/whmcs/img/13-emailsHistory.png" height="200" width="200">
 <img alt="ProductDetails" src="https://demo.aminarjmand.com/coding/whmcs/img/14-ProuductDetailsPage.png" height="200" width="200">
 ---------------------
-Authors : Ehsan Chavoshi (HostFa) & Amin Arjmand (RaymonWeb)
+Authors : Ehsan Chavoshi (HostFa) & Amin Arjmand (RaymonWeb) & Hamid Ghouli (PersisHost)
 Lincense : MIT License
 https://github.com/EhsanCh/whmcs-jalalidate/ Or https://github.com/sibche2013/whmcs-jalalidate (WHMCS 7.1.1 Updated)
