@@ -51,6 +51,7 @@ Same as Admin (Above)
 }
 
 # شمسی کردن تاریخ قسمت اطلاعیه ها یا اخبار
+<pre>
 برای شمسی کردن کافیه در فایل
 announcements.tpl
 حدودا خط 20 به جای 
@@ -71,7 +72,7 @@ viewannoincement.tpl
 {$timestamp|date_format:"%A, %B %e, %Y"}
 عبارت زیر رو قرار دهید :
 {jdate("j F Y",strtotime($timestamp|date_format:"%A, %B %e, %Y"))}
-
+</pre>
 ---------------------
 # تصاویر قسمت های فارسی شده :
 جهت مشاهده تصاویر در ابعاد واقعی ، بر روی آنها کلیک نمایید >>
