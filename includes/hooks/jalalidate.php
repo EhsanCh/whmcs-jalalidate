@@ -61,12 +61,12 @@ add_hook('ClientAreaPage', 1, function ($templateVariables) {
         $templateVariables['jfulldate'] = jdate("l ، j F Y", strtotime($templateVariables['date']));
     }
 
-    $datefields = array('nextduedate', 'expirydate', 'lastupdate', 'date', 'duedate', 'datepaid', 'datedue');
+    $datefields = array( 'expirydate',  'date', 'duedate', 'datepaid', 'datedue');
     foreach ($datefields as $datefield) {
         if ($templateVariables[$datefield])
             $templateVariables[$datefield] = '<span class="text-danger">' . date("Y/m/d", strtotime($templateVariables[$datefield])) . '<br>(' . jdate("Y/m/d", strtotime($templateVariables[$datefield])) . ')</span>';
     }
-    $datefields1 = array('registrationdate', 'regdate', 'datecreated');
+    $datefields1 = array('registrationdate',  'datecreated');
     foreach ($datefields1 as $datefield2) {
         if ($templateVariables[$datefield2])
             $templateVariables[$datefield2] = '<span class="text-info">' . date("Y/m/d", strtotime($templateVariables[$datefield2])) . '<br>(' . jdate("Y/m/d", strtotime($templateVariables[$datefield2])) . ')</span>';
