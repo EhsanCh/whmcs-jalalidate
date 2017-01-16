@@ -57,21 +57,22 @@ announcements.tpl
 حدودا خط 20 به جای 
 {"M jS"|date:$announcement.timestamp}
 عبارت زیر رو قرار بدین :
-{$announcement.timestamp}
+{if $jdate}{$announcement.timestamp}{else}{"M jS"|date:$announcement.timestamp}{/if}
 
 و در فایل
 homepage.tpl
 حدودا خط 20 به جای
 {$announcement.rawDate|date_format:"M jS"}
 عبارت زیر رو قرار بدین :
-{$announcement.rawDate}
+{if $jdate}{$announcement.rawDate}{else}{$announcement.rawDate|date_format:"M jS"}{/if}
 
 و در نهایت در فایل
 viewannoincement.tpl
 حدودا خط 13 بجای 
 {$timestamp|date_format:"%A, %B %e, %Y"}
 عبارت زیر رو قرار دهید :
-{jdate("j F Y",strtotime($timestamp|date_format:"%A, %B %e, %Y"))}
+{if $jdate}{jdate("j F Y",strtotime($timestamp|date_format:"%A, %B %e, %Y"))}{else}{$timestamp|date_format:"%A, %B %e, %Y"}{/if}
+
 </pre>
 ---------------------
 # تصاویر قسمت های فارسی شده :
