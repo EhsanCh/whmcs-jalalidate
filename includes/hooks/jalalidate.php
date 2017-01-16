@@ -16,7 +16,7 @@ add_hook('ClientAreaPage', 1, function($templateVariables)
         'فارسی'
     )))
         return;
-    //$templateVariables['jdate'] = TRUE;
+    $templateVariables['jdate'] = TRUE;
     
     // Invoices Jalali Date - clientarea.php?action=invoices
     foreach ($templateVariables['invoices'] as &$invoices) {
@@ -136,7 +136,7 @@ add_hook('ClientAreaProductDetailsPreModuleTemplate', 1, function($templateVaria
     )))
         return;
     
-    //$templateVariables['jdate'] = TRUE;
+    $templateVariables['jdate'] = TRUE;
     $datefields = array(
         'nextduedate'
     );
