@@ -78,17 +78,23 @@ add_hook('ClientAreaPage', 1, function($templateVariables)
     foreach ($templateVariables['announcements'] as &$announcements) {
         $announcements['rawDate']   = jdate("j F Y", strtotime($announcements['rawDate']));
         $announcements['timestamp'] = jdate("j F Y", $announcements['timestamp']);
-        
     }
     
-    /*// Transactions Jalali Date
+    // ServerStatus Jalali Date - serverstatus.php
+    foreach ($templateVariables['issues'] as &$issues) {
+        $issues['startdate']   = '<span class="text-danger">' . date("Y/m/d H:i", strtotime($issues['startdate'])) . '&nbsp;(' . jdate("Y/m/d H:i", strtotime($issues['startdate'])) . ')</span>';
+        $issues['lastupdate'] = '<span class="text-info">' . date("Y/m/d H:i", strtotime($issues['lastupdate'])) . '&nbsp;(' . jdate("Y/m/d H:i", strtotime($issues['lastupdate'])) . ')</span>'; 
+        $issues['enddate'] = '<span class="text-info">' . date("Y/m/d H:i", strtotime($issues['enddate'])) . '&nbsp;(' . jdate("Y/m/d H:i", strtotime($issues['enddate'])) . ')</span>'; 
+    }
+    
+    // Transactions Jalali Date
     foreach ($templateVariables['transactions'] as &$transactions) {
-        $transactions['date'] = '<span class="text-danger">' . date("Y/m/d", strtotime($transactions['date'])) . '<br>(' . jdate("Y/m/d", strtotime($transactions['date'])) . ')</span>';
+        $transactions['date'] = '<span class="text-info">' . date("Y/m/d", strtotime($transactions['date'])) . '<br>' . jdate("Y/m/d", strtotime($transactions['date'])) . '</span>';
     }
         
     if ($templateVariables['date']) {
         $templateVariables['jfulldate'] = jdate("l ، j F Y", strtotime($templateVariables['date']));
-    }*/
+    }
     
     $datefields = array(
         'expirydate',
