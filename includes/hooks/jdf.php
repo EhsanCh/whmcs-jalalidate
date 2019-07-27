@@ -1,10 +1,8 @@
-<?php /* In the name of Allah */
+<?php /* In the name of Allah = بسم اللّه الرّحمن الرّحیم */
 
 /** Hijri_Shamsi, Solar(Jalali) Date and Time functions
--------------------------------------------------------
-Copyright(C)2015, Reza Gholampanahi , http://jdf.scr.ir
--------------------------------------------------------
-1394/05/01 = 1436/10/06 = 2015/07/23 :: version 2.60 */
+Copyright(C)2016, Reza Gholampanahi , http://jdf.scr.ir
+1395/05/14 = 1437/11/01 = 2016/08/04 :: version 2.65 */
 
 /*	F	*/
 function jdate($format,$timestamp='',$none='',$time_zone='Asia/Tehran',$tr_num='fa'){
@@ -170,7 +168,7 @@ function jdate($format,$timestamp='',$none='',$time_zone='Asia/Tehran',$tr_num='
 	break;
 
 	case'v':
-	 $out.=jdate_words(array('ss'=>substr($j_y,2,2)),' ');
+	 $out.=jdate_words(array('ss'=>($j_y%100)),' ');
 	break;
 
 	case'V':
@@ -312,7 +310,8 @@ function jstrftime($format,$timestamp='',$none='',$time_zone='Asia/Tehran',$tr_n
 
 	/* Year */
 	case'C':
-	$out.=substr($j_y,0,2);
+    $tmp=(int)($j_y/100);
+	$out.=($tmp>9)?$tmp:'0'.$tmp;
 	break;
 
 	case'g':
@@ -431,20 +430,44 @@ function jstrftime($format,$timestamp='',$none='',$time_zone='Asia/Tehran',$tr_n
 }
 
 /*	F	*/
-function jmktime($h='',$m='',$s='',$jm='',$jd='',$jy='',$is_dst=-1){
- $h=tr_num($h); $m=tr_num($m); $s=tr_num($s); $jm=tr_num($jm); $jd=tr_num($jd); $jy=tr_num($jy);
- if($h=='' and $m=='' and $s=='' and $jm=='' and $jd=='' and $jy==''){
-	return mktime();
+function jmktime($h='',$m='',$s='',$jm='',$jd='',$jy='',$none='',$timezone='Asia/Tehran'){
+ if($timezone!='local')date_default_timezone_set($timezone);
+ if($h==''){
+  return time();
  }else{
-	list($year,$month,$day)=jalali_to_gregorian($jy,$jm,$jd);
-	return mktime($h,$m,$s,$month,$day,$year,$is_dst);
+    list($h,$m,$s,$jm,$jd,$jy)=explode('_',tr_num($h.'_'.$m.'_'.$s.'_'.$jm.'_'.$jd.'_'.$jy));
+  if($m==''){
+   return mktime($h);
+  }else{
+   if($s==''){
+    return mktime($h,$m);
+   }else{
+    if($jm==''){
+     return mktime($h,$m,$s);
+    }else{
+     $jdate=explode('_',jdate('Y_j','','',$timezone,'en'));
+     if($jd==''){
+      list($gy,$gm,$gd)=jalali_to_gregorian($jdate[0],$jm,$jdate[1]);
+      return mktime($h,$m,$s,$gm);
+     }else{
+      if($jy==''){
+       list($gy,$gm,$gd)=jalali_to_gregorian($jdate[0],$jm,$jd);
+       return mktime($h,$m,$s,$gm,$gd);
+      }else{
+       list($gy,$gm,$gd)=jalali_to_gregorian($jy,$jm,$jd);
+       return mktime($h,$m,$s,$gm,$gd,$gy);
+      }
+     }
+    }
+   }
+  }
  }
 }
 
 /*	F	*/
-function jgetdate($timestamp='',$none='',$tz='Asia/Tehran',$tn='en'){
+function jgetdate($timestamp='',$none='',$timezone='Asia/Tehran',$tn='en'){
  $ts=($timestamp=='')?time():tr_num($timestamp);
- $jdate=explode('_',jdate('F_G_i_j_l_n_s_w_Y_z',$ts,'',$tz,$tn));
+ $jdate=explode('_',jdate('F_G_i_j_l_n_s_w_Y_z',$ts,'',$timezone,$tn));
  return array(
 	'seconds'=>tr_num((int)tr_num($jdate[6]),$tn),
 	'minutes'=>tr_num((int)tr_num($jdate[2]),$tn),
@@ -462,9 +485,9 @@ function jgetdate($timestamp='',$none='',$tz='Asia/Tehran',$tn='en'){
 
 /*	F	*/
 function jcheckdate($jm,$jd,$jy){
- $jm=tr_num($jm); $jd=tr_num($jd); $jy=tr_num($jy);
+ list($jm,$jd,$jy)=explode('_',$jm.'_'.$jd.'_'.$jy);
  $l_d=($jm==12)?(($jy%33%4-1==(int)($jy%33*.05))?30:29):31-(int)($jm/6.5);
- return($jm>0 and $jd>0 and $jy>0 and $jm<13 and $jd<=$l_d)?true:false;
+ return($jm>12 or $jd>$l_d or $jm<1 or $jd<1 or $jy<1)?false:true;
 }
 
 /*	F	*/
@@ -496,7 +519,7 @@ function jdate_words($array,$mod=''){
 	 $k4=array('','یک','دو','سه','چهار','پنج','شش','هفت','هشت','نه');
 	 $h4=$k4[$xy4];
 	}
-	$array[$type]=(($num>99)?str_ireplace(array('12','13','14','19','20')
+	$array[$type]=(($num>99)?str_replace(array('12','13','14','19','20')
  ,array('هزار و دویست','هزار و سیصد','هزار و چهارصد','هزار و نهصد','دوهزار')
  ,substr($num,0,2)).((substr($num,2,2)=='00')?'':' و '):'').$h3.$p34.$h34.$h4;
 	break;
@@ -558,7 +581,7 @@ Copyright(C)2015 JDF.SCR.IR : [ http://jdf.scr.ir/jdf ] version 2.60
 
 /*	F	*/
 function gregorian_to_jalali($gy,$gm,$gd,$mod=''){
-	$gy=tr_num($gy); $gm=tr_num($gm); $gd=tr_num($gd);/* <= Extra :اين سطر ، جزء تابع اصلي نيست */
+	list($gy,$gm,$gd)=explode('_',tr_num($gy.'_'.$gm.'_'.$gd));/* <= Extra :اين سطر ، جزء تابع اصلي نيست */
  $g_d_m=array(0,31,59,90,120,151,181,212,243,273,304,334);
  $jy=($gy<=1600)?0:979;
  $gy-=($gy<=1600)?621:1600;
@@ -578,7 +601,7 @@ function gregorian_to_jalali($gy,$gm,$gd,$mod=''){
 
 /*	F	*/
 function jalali_to_gregorian($jy,$jm,$jd,$mod=''){
-	$jy=tr_num($jy); $jm=tr_num($jm); $jd=tr_num($jd);/* <= Extra :اين سطر ، جزء تابع اصلي نيست */
+	list($jy,$jm,$jd)=explode('_',tr_num($jy.'_'.$jm.'_'.$jd));/* <= Extra :اين سطر ، جزء تابع اصلي نيست */
  $gy=($jy<=979)?621:1600;
  $jy-=($jy<=979)?0:979;
  $days=(365*$jy) +(((int)($jy/33))*8) +((int)((($jy%33)+3)/4)) 
@@ -603,4 +626,4 @@ function jalali_to_gregorian($jy,$jm,$jd,$mod=''){
  return($mod=='')?array($gy,$gm,$gd):$gy.$mod.$gm.$mod.$gd; 
 }
 
-/* [ jdf.php ] version 2.60 ?> Download new version from [ http://jdf.scr.ir ] */
+/* [ jdf.php ] version 2.65 ?> Download new version from [ http://jdf.scr.ir ] */
