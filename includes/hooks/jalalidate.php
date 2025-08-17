@@ -3,7 +3,7 @@
  ** WHMCS Jalali Dates **
  By Ehsan Chavoshi (HostFa) & Amin Arjmand (https://github.com/sibche2013) & Hamid Ghouli (https://github.com/hamidghouli)
  Date : 2016-04-23
- Updated : 2017-01-16
+ Updated : 2025-08-17
  Lincense : MIT License
  Source : https://github.com/EhsanCh/whmcs-jalalidate Or https://github.com/sibche2013/whmcs-jalalidate (WHMCS 7.1.1 Updated)
  ***************************************************** */
@@ -36,6 +36,8 @@ add_hook('ClientAreaPage', 1, function($templateVariables)
     
     // Domains Jalali Date - clientarea.php?action=domains
     foreach ($templateVariables['domains'] as &$domains) {
+						  
+			
         if (strtotime($domains['registrationdate']) > 0)
             $domains['registrationdate'] = '<span class="text-info">' . date("Y/m/d", strtotime($domains['normalisedRegistrationDate'])) . '<br>' . jdate("Y/m/d", strtotime($domains['normalisedRegistrationDate'])) . '</span>';
         if (strtotime($domains['nextduedate']) > 0)
