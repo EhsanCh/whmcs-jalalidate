@@ -95,8 +95,8 @@ viewannoincement.tpl
 
 # قالب راستچین و فارسی شده WHMCS
 این قالب با آخرین نسخه<br>
-WHMCS V7.1.1<br>
-سازگار می باشد .<br>
+WHMCS V8.13.1<br>
+تست شده و سازگار است .<br>
 <a href="https://github.com/sibche2013/WhmcsClientPersianTheme">دانلود قالب فارسی سازی شده و راستچین WHMCS</a><br>
 
 <br>
