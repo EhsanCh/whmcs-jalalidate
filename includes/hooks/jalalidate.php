@@ -36,8 +36,8 @@ add_hook('ClientAreaPage', 1, function($templateVariables)
     
     // Domains Jalali Date - clientarea.php?action=domains
     foreach ($templateVariables['domains'] as &$domains) {
-						  
-			
+		if (!is_array($domains))
+			continue;
         if (strtotime($domains['registrationdate']) > 0)
             $domains['registrationdate'] = '<span class="text-info">' . date("Y/m/d", strtotime($domains['normalisedRegistrationDate'])) . '<br>' . jdate("Y/m/d", strtotime($domains['normalisedRegistrationDate'])) . '</span>';
         if (strtotime($domains['nextduedate']) > 0)
@@ -78,8 +78,8 @@ add_hook('ClientAreaPage', 1, function($templateVariables)
     
     // Announcement Jalali Date - announcements.php
     foreach ($templateVariables['announcements'] as &$announcements) {
-        $announcements['rawDate']   = jdate("j F Y", strtotime($announcements['rawDate']));
-        $announcements['timestamp'] = jdate("j F Y", $announcements['timestamp']);
+        $announcements['date']   = jdate("j F Y", strtotime($announcements['rawDate']));
+																				  
     }
     
     // ServerStatus Jalali Date - serverstatus.php
@@ -131,7 +131,7 @@ add_hook('ClientAreaPage', 1, function($templateVariables)
 add_hook('ClientAreaProductDetailsPreModuleTemplate', 1, function($templateVariables)
 {
     
-    if (!in_array($templateVariables[clientsdetails][language], array(
+    if (!in_array($templateVariables["clientsdetails"]["language"], array(
         'farsi',
         'persian',
         'فارسی'
